@@ -4,20 +4,20 @@ let text = File.ReadAllText(filePath)
 
 printfn "size: %i content: %A" text.Length text
 
-//let rowTransposition (text:string) columns =
+let todo = List.chunkBySize 3 (text.ToCharArray() |> List.ofArray)
 
-let transposeRow columns col (body:string) = 
-    let bodyWithIndex = List.init body.Length (fun i -> (i, body.[i]))   
-    bodyWithIndex 
-    |> List.filter (fun (index, x) -> index % columns = col)
-    |> List.map (fun (index, x) -> x)
-    |> Array.ofList |> (fun arr -> System.String(arr))
+let transposeRow columns (body:string) col =
+    body.ToCharArray()
+    |> Seq.mapi (fun i x -> (i,x))
+    |> Seq.filter (fun (i, x) -> i % columns = col)
+    |> Seq.map (fun (i, x) -> x)
+    |> Array.ofSeq |> (fun arr -> System.String(arr))
 
 let rowTransposition columns text =
-    let getCol = transposeRow columns
+    let getColumn = transposeRow columns text
     [0..(columns - 1)]
-    |> List.map (fun c -> getCol c text)
+    |> List.map getColumn
+    |> List.reduce (+)
     
 
-
-rowTransposition 3 text
+"Myaaillba d tearh lt m" = rowTransposition 3 text
