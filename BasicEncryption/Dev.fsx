@@ -6,11 +6,15 @@ printfn "size: %i content: %A" text.Length text
 
 let todo = List.chunkBySize 3 (text.ToCharArray() |> List.ofArray)
 
+let (?>) f x =
+    match f with
+    | true -> Some(x)
+    | _ -> None
+    
 let transposeRow columns (body:string) col =
     body.ToCharArray()
-    |> Seq.mapi (fun i x -> (i,x))
-    |> Seq.filter (fun (i, x) -> i % columns = col)
-    |> Seq.map (fun (i, x) -> x)
+    |> Seq.mapi (fun i x -> i,x)
+    |> Seq.choose (fun (i,x) -> i % columns = col ?> x)
     |> Array.ofSeq |> (fun arr -> System.String(arr))
 
 let rowTransposition columns text =
