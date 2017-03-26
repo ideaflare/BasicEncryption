@@ -56,7 +56,7 @@ let allRows = spillRows @ normalRows
 |> List.collect (fun col ->     
      [0 .. (rows - 1)]
      |> List.map (fun row ->
-     if (col = rowLength && col >= spills) then
+     if (col = rowLength && row >= spills) then
         (-1,-1)
      else (col,row)))
      
@@ -64,7 +64,7 @@ let allRows = spillRows @ normalRows
 |> List.collect (fun col ->     
      [0 .. (rows - 1)]
      |> List.map (fun row ->
-     if (col = rowLength && col >= spills)
+     if (col = rowLength && row >= spills)
      then None
      else Some(allRows.[row].[col]) ))
 |> List.choose id
