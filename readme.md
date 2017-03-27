@@ -22,6 +22,12 @@ To encrypt a body of text using the following recipe:
 4. row transposition substitution keymap by G places
 5. swap (G/2) first letters of keymap with the last
 ### apply substitution
-6. Apply substitution to the first half of the body using the substitution keymap
+6. apply substitution to the first half of the body using the substitution keymap
 
 *And do the reverse to decrypt the body*
+
+#### Coming soon:
+A reward for cracking a file encrypted with this algorithm:
+* File containing 0.1 Bitcoin _(around $100 early 2017)_
+
+The reward is yours to keep, but please do comment/wiki how you did it :)
