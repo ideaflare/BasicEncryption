@@ -59,6 +59,7 @@
     <None Include="App.config" />
     <Content Include="packages.config" />
     <None Include="Dev.fsx" />
+    <None Include="readme.md" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
