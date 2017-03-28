@@ -1,31 +1,25 @@
-﻿type File = System.IO.File
+﻿#load "Domain.fs"
+#load "Transposition.fs"
+open Domain
+open Transposition
+
+type File = System.IO.File
 let filePath = """C:\MyTemp\findme.txt"""
 let text = File.ReadAllText(filePath)
 
-let listText (txt:string) = txt.ToCharArray() |> List.ofArray
-
 printfn "size: %i content: %A" text.Length text
 
-let todo = List.chunkBySize 3 (listText text)
 //let todo2 = (listText text) |> List.groupBy
 
-let transposeRow columns (body:string) col =
-    body.ToCharArray()
-    |> Seq.mapi (fun i x -> if i % columns = col then Some(x) else None)
-    |> Seq.choose id
-    |> Array.ofSeq |> (fun arr -> System.String(arr))
-
-let rowTransposition columns text =
-    let getColumn = transposeRow columns text
-    [0..(columns - 1)]
-    |> List.map getColumn
-    |> List.reduce (+)
+let body = safeString text
     
-let transposed = rowTransposition 3 text
+let transposed = columnTransposition 3 body
 
 "Myaaillba d tearh lt m" = transposed
 
 (* Now to reverse the transposition without the padding, first stab: *)
+
+let listText (txt:string) = txt.ToCharArray() |> List.ofArray
 
 let cypher = listText "Myaaillba d tea?rh lt m"
 
