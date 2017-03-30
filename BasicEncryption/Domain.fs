@@ -1,10 +1,10 @@
 ﻿[<AutoOpen>]
 module Domain
 
-let charListToString charList : string =
+let stringFromCharList charList : string =
     System.String(Array.ofList charList)
 
-let stringToCharList (string : string) =
+let charList (string : string) =
     match string with
     | null -> []
     | text -> text.ToCharArray() |> List.ofArray

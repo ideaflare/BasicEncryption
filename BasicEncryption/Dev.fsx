@@ -3,12 +3,10 @@
 open Domain
 open Transposition
 
-type File = System.IO.File
 let filePath = """C:\MyTemp\findme.txt"""
-let stringText = File.ReadAllText(filePath)
+let stringText = System.IO.File.ReadAllText(filePath)
 
 printfn "size: %i content: %A" stringText.Length stringText
-
 
 "Myaaillba d tearh lt m" = transpose 3 stringText
 
@@ -18,7 +16,7 @@ printfn "size: %i content: %A" stringText.Length stringText
 
 //let todo2 = (listText text) |> List.groupBy
 
-let cypher = stringToCharList "Myaaillba d tea?rh lt m"
+let cypher = charList "Myaaillba d tea?rh lt m"
 
 let rows = 3
 let spills = cypher.Length % rows
