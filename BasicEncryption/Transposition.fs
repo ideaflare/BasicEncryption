@@ -1,13 +1,8 @@
 ﻿module Transposition
 
-let private columnString columns body col =
-    charList body
-    |> Seq.mapi (fun i x -> if i % columns = col then Some(x) else None)
-    |> Seq.choose id
-    |> Array.ofSeq |> (fun arr -> System.String(arr))
-
-let columnTransposition columns body =
-    let getColumn = columnString columns body
-    [0..(columns - 1)]
-    |> List.map getColumn
+let transpose size (body : string) =
+    [0..(size - 1)]
+    |> List.map (fun colStart   -> [colStart .. size .. (body.Length - 1)])
+    |> List.map (fun colIndexes -> colIndexes |> List.map (fun i -> body.[i]))
+    |> List.map charListToString
     |> List.reduce (+)

@@ -1,17 +1,22 @@
 ﻿[<AutoOpen>]
 module Domain
 
-type CharList =
-    | SafeString of char list
+let charListToString charList : string =
+    System.String(Array.ofList charList)
+
+type Text = Text of char list
 
 let charList = function
-    | SafeString chars -> chars
+    | Text chars -> chars
 
-let emptyString = SafeString []
+let emptyText = Text []
 
-let safeString (unsafeString: string) =
-    match unsafeString with
-    | null -> emptyString
+let safeString (nullableString: string) =
+    match nullableString with
+    | null -> emptyText
     | str -> str.ToCharArray() 
              |> List.ofArray
-             |> SafeString
+             |> Text
+
+let stringValue = function
+    | Text chars -> charListToString chars

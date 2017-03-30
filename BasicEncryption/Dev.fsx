@@ -5,23 +5,20 @@ open Transposition
 
 type File = System.IO.File
 let filePath = """C:\MyTemp\findme.txt"""
-let text = File.ReadAllText(filePath)
+let stringText = File.ReadAllText(filePath)
 
-printfn "size: %i content: %A" text.Length text
+printfn "size: %i content: %A" stringText.Length stringText
 
-//let todo2 = (listText text) |> List.groupBy
 
-let body = safeString text
-    
-let transposed = columnTransposition 3 body
+"Myaaillba d tearh lt m" = transpose 3 stringText
 
-"Myaaillba d tearh lt m" = transposed
 
 (* Now to reverse the transposition without the padding, first stab: *)
 
-let listText (txt:string) = txt.ToCharArray() |> List.ofArray
 
-let cypher = listText "Myaaillba d tea?rh lt m"
+//let todo2 = (listText text) |> List.groupBy
+
+let cypher = charList (safeString "Myaaillba d tea?rh lt m")
 
 let rows = 3
 let spills = cypher.Length % rows
