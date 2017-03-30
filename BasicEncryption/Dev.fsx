@@ -18,7 +18,7 @@ printfn "size: %i content: %A" stringText.Length stringText
 
 //let todo2 = (listText text) |> List.groupBy
 
-let cypher = charList (safeString "Myaaillba d tea?rh lt m")
+let cypher = stringToCharList "Myaaillba d tea?rh lt m"
 
 let rows = 3
 let spills = cypher.Length % rows
