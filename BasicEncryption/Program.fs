@@ -14,6 +14,16 @@ let encrypt text =
     let cypher = jumble 7 text
     printfn "\nencrypted text:\n\n%s" cypher
 
+let tryReadAllText filePath =
+    try
+        let text = System.IO.File.ReadAllText(filePath)
+        Ok text
+    with
+        | :? System.IO.FileNotFoundException ->
+            Error (sprintf "Couldn't find file %s" filePath)
+        | e -> 
+            Error (sprintf "Error reading text: %A" e)
+
 [<EntryPoint>]
 let main argv = 
 
@@ -22,12 +32,9 @@ let main argv =
     match maybeFilePath with
     | None -> usage ()
     | Some(filePath) ->
-        try
-            let stringText = System.IO.File.ReadAllText(filePath)
-            encrypt stringText
-        with
-            | :? System.IO.FileNotFoundException -> printfn "Couldn't find file %s" filePath
-            | e -> printfn "Error reading text: %A" e
+        match tryReadAllText filePath with
+        | Ok(text) -> encrypt text
+        | Error msg -> printfn "Error reading text: %s" msg        
 
     0 // return an integer exit code
           
