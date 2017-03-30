@@ -1,7 +1,8 @@
 ﻿#load "Domain.fs"
 #load "Transposition.fs"
+#load "TextTransposition.fs"
 open Domain
-open Transposition
+open TextTransposition
 
 let filePath = """C:\MyTemp\findme.txt"""
 let stringText = System.IO.File.ReadAllText(filePath)

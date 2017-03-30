@@ -1,12 +1,7 @@
 ﻿module Transposition
 
-let private transposeChars size (body : char list) =
-    [0..(size - 1)]
-    |> List.map (fun colStart   -> [colStart .. size .. (body.Length - 1)])
-    |> List.map (fun colIndexes -> colIndexes |> List.map (fun i -> body.[i]))
-    |> List.collect id
-
-let transpose size (body : string) =
-    charList body
-    |> transposeChars size
-    |> stringFromCharList
+let transpose columns items =    
+    if columns < 2 then items else
+    [0 .. columns - 1]
+    |> List.collect (fun colStart   -> [colStart .. columns .. List.length items  - 1])
+    |> List.map (fun i -> items.[i])
