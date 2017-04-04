@@ -1,6 +1,6 @@
 ﻿module Transposition
 
-let transpose columns items =    
+let apply columns items =    
     if columns < 2 then items else
     [0 .. columns - 1]
     |> List.collect (fun colStart -> [colStart .. columns .. List.length items - 1])

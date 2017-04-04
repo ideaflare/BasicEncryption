@@ -7,7 +7,7 @@ let usage () =
 
 let encrypt text =
     let rec jumble n text =
-        let transposed = TextTransposition.transpose 3 text
+        let transposed = TextOperations.transpose 3 text
         match n with
         | 0 -> transposed
         | n -> jumble (n - 1) transposed
