@@ -3,7 +3,9 @@
 // Old school MsTest zZzz :|
 
 open Microsoft.VisualStudio.TestTools.UnitTesting
-open TextTransposition
+open TextOperations
+open Rotation
+open Domain
 
 [<TestClass>]
 type TranspositionTests() =
@@ -29,5 +31,14 @@ type TranspositionTests() =
     member me.UndoTransposition() =
         let plaintext = "Some test string"
         let cypher = transpose 3 plaintext
-        let decrypted = undo 3 cypher
+        let decrypted = undoTranspose 3 cypher
         Assert.AreEqual(plaintext, decrypted)
+
+    [<TestMethod>]
+    member me.LeftRotation() =
+        let plain =    "xxooo" |> charList
+        let expected = "oooxx" |> charList
+
+        let rotated = apply -2 plain
+        
+        Assert.AreEqual(expected, rotated)

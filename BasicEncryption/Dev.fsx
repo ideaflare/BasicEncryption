@@ -7,13 +7,6 @@ open Domain
 open TextOperations
 open Substitution
 
-let filePath = """C:\MyTemp\findme.txt"""
-let stringText = System.IO.File.ReadAllText(filePath)
-
-printfn "size: %i content: %A" stringText.Length stringText
-
-"Myaaillba d tearh lt m" = transpose 3 stringText
-
 // substitution -------------------------------
 
 let sub = substituteList keymap replaceMap;;
@@ -25,6 +18,13 @@ let decrypted = fix (charList "sc\{)xcl)c)JA&&Jo)JcMf*")
 decrypted |> stringFromCharList = testText
 
 // --------------------------------------------
+
+let filePath = """C:\MyTemp\findme.txt"""
+let stringText = System.IO.File.ReadAllText(filePath)
+
+printfn "size: %i content: %A" stringText.Length stringText
+
+"Myaaillba d tearh lt m" = transpose 3 stringText
 
 
 (* Now to reverse the transposition without the padding, first stab: *)
