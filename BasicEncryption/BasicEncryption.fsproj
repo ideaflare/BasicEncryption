@@ -64,6 +64,7 @@
     <None Include="App.config" />
     <Content Include="packages.config" />
     <None Include="Dev.fsx" />
+    <Content Include="td.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />

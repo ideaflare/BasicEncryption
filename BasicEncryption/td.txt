@@ -1,0 +1,5 @@
+﻿-> Dry
+-> Property based tests
+-> Remove runtime errors possibility
+-> Functional Core
+-> Rethink weaknesses of algo / password-to-permutations
