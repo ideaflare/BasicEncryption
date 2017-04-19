@@ -41,6 +41,12 @@ printfn "size: %i content: %A" stringText.Length stringText
 
 "Myaaillba d tearh lt m" = transpose 3 stringText
 
+let zeroRotate = transpose 0 testPlainText
+let negativeRotate = transpose -5 testPlainText
+zeroRotate = negativeRotate
+
+transpose 5 (null : string) = transpose 5 ""
+
 // rotation ----------------------------------
 
 let emptyInput : int list = []
