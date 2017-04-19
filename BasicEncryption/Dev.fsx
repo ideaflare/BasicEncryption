@@ -41,11 +41,22 @@ printfn "size: %i content: %A" stringText.Length stringText
 
 "Myaaillba d tearh lt m" = transpose 3 stringText
 
-let zeroRotate = transpose 0 testPlainText
-let negativeRotate = transpose -5 testPlainText
-zeroRotate = negativeRotate
+let zeroAndNegativeTransposeAreSame =
+    let zero = transpose 0 testPlainText
+    let negative = transpose -5 testPlainText
+    zero = negative
 
-transpose 5 (null : string) = transpose 5 ""
+let nullAndEmptyYieldsSame =
+    transpose 5 (null : string) = transpose 5 ""
+
+let applyAndUndoGiveSameResult (plaintext : string) =
+    let r = System.Random()
+    let tSize = r.Next(0, plaintext.Length + 5)
+    let cypher = transpose tSize plaintext
+    let decrypted = undoTranspose tSize cypher
+    plaintext = decrypted
+
+applyAndUndoGiveSameResult "Some test string"
 
 // rotation ----------------------------------
 
@@ -59,6 +70,10 @@ wrapLeft 0 [1..5] = [1..5]
 
 wrapRight 5 (wrapLeft 5 testCharList) = testCharList
 
+wrapLeft 1  (charList "xooo") = (charList "ooox")
+wrapRight 1 (charList "xooo") = (charList "oxoo")
+let ``Negative is same as wrap positive the other way``=
+    wrapLeft -1 testCharList = wrapRight 1 testCharList
 
 
 
