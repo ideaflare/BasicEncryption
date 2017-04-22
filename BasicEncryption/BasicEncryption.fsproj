@@ -58,11 +58,13 @@
     <Compile Include="Transposition.fs" />
     <Compile Include="Rotation.fs" />
     <Compile Include="Substitution.fs" />
+    <Compile Include="KeyMap.fs" />
     <Compile Include="TextOperations.fs" />
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="Program.fs" />
     <None Include="App.config" />
     <Content Include="packages.config" />
+    <None Include="Tests.fsx" />
     <None Include="Dev.fsx" />
     <Content Include="td.txt" />
   </ItemGroup>

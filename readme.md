@@ -7,7 +7,7 @@ To encrypt a body of text using the basics of encryption:
 
 ## The ingredients are:
 
-* A keymap that contains all the letters on the keyboard ```abc..ABC..123..!@#$%^```
+* A Set that contains frequent the letters on the keyboard ```abc..ABC..123..``` as well as all the letters in the plaintext. (keymap)
 * A substitution keymap. Initially copy of the original keymap, used to substitute letters with their corresponding index in the keymap
 * A password: Password1
 * A number G = 2
