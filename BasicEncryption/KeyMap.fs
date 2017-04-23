@@ -12,7 +12,13 @@ let buildKeyMap (input : char list) =
     |> List.distinct
     |> List.sortBy ( fun _ -> rnd.Next())
 
-let toNumberList password keymap =
+let splitPrependedKeyMap items =
+    let uniqueItems = items |> List.distinct |> List.length
+    let keyMap = items |> List.take uniqueItems
+    let tail   = items |> List.skip uniqueItems
+    keyMap, tail
+
+let secretNumbers password keymap =
     let keymapIndex letter = keymap |> List.findIndex ((=) letter)
     password
     |> List.map keymapIndex
