@@ -1,6 +1,11 @@
 ﻿// Learn more about F# at http://fsharp.org
 // See the 'F# Tutorial' project for more help.
 
+// F# 4.1 not yet on mono/fhsarp? so:
+type ResultTemp<'a> =
+    | Ok of 'a
+    | Error of string
+
 let usage () =
     printfn "No file specified."
     printfn "Usage: BasicEncryption.exe fileName"
