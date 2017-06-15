@@ -60,6 +60,7 @@
     <Compile Include="Substitution.fs" />
     <Compile Include="KeyMap.fs" />
     <Compile Include="TextOperations.fs" />
+    <Compile Include="FileIO.fs" />
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="Program.fs" />
     <None Include="App.config" />
