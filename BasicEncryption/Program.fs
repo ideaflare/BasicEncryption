@@ -14,7 +14,6 @@ let usage customMessage =
 let encrypt text =    
     let rec jumble n text =
         let transposed = TextOperations.transpose 3 text
-        //printfn "encrypt -> %i" n
         match n with
         | 0 -> transposed
         | n -> jumble (n - 1) transposed
@@ -24,7 +23,6 @@ let encrypt text =
 let decrypt text =
     let rec jumble i n text =
         let transposed = TextOperations.undoTranspose 3 text
-        //printfn "decrypt -> %i" i
         if i = n then
           transposed
         else jumble (i + 1) n transposed
