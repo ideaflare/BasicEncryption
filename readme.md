@@ -1,3 +1,8 @@
+# Warning
+
+* Don't roll your own encryption, use something known like TrueCrypt or 7z built in AES encryption
+* This is intended just for play
+
 # Usage
  * To encrypt:
    `BasicEncryption.exe -e fileName`
