@@ -3,7 +3,8 @@ module FileIO
 // F# 4.1 not yet on mono/fhsarp? so:
 type ResultTemp<'a> =
     | Ok of 'a
-    | Error of string
+    | FileNotFound of string
+    | UnexpectedError of exn
 
 let tryReadAllText filePath =
     try
@@ -11,6 +12,5 @@ let tryReadAllText filePath =
         Ok text
     with
         | :? System.IO.FileNotFoundException ->
-            Error (sprintf "Couldn't find file %s" filePath)
-        | e -> 
-            Error (sprintf "Error reading text: %A" e)
+            FileNotFound filePath
+        | e -> UnexpectedError e

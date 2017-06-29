@@ -32,7 +32,8 @@ let decrypt text =
 let transform operation filePath =
     match tryReadAllText filePath with
     | Ok(text) -> operation text
-    | Error msg -> printfn "Error reading text: %s" msg
+    | FileNotFound msg -> printfn "Couldn't find file: %s" msg
+    | UnexpectedError e -> printfn "Unexpected error reading text: %s" (e.ToString())
 
 [<EntryPoint>]
 let main argv =
