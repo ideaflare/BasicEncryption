@@ -4,10 +4,14 @@
 * This is intended just for play
 
 # Usage
+`BasicEncryption.exe [encrypt/decrypt] [key1] [key2] [filePath]`
+
+Choose 2 numbers smaller than the number of characters in a file you want to encrypt.
+For example, file has length of 593 characters, choose 23 and 17 arbitrarily.
  * To encrypt:
-   `BasicEncryption.exe -e fileName`
+   `BasicEncryption.exe -e 23 17 fileName`
  * To decrypt:
-   `BasicEncryption.exe -d fileName`
+   `BasicEncryption.exe -d 23 17 fileName`
 
 Add `>` to the end if you want to output to a file, for example:
   `BasicEncryption.exe -d test.txt > temp.txt`
